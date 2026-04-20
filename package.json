@@ -5,7 +5,8 @@
   "main": "index.html",
   "scripts": {
     "dev": "python3 -m http.server 3000",
-    "build": "echo 'Building static files...'"
+    "build": "echo 'Building static files...'",
+    "deploy": "echo 'Deploy to Cloudflare Pages:' && echo '1. Push code to GitHub: git push -u origin master' && echo '2. Go to Cloudflare Pages: https://dash.cloudflare.com/' && echo '3. Create new project and connect to your GitHub repo' && echo '4. Configure build settings and deploy'"
   },
   "keywords": ["portfolio", "data-analysis", "frontend"],
   "author": "",
