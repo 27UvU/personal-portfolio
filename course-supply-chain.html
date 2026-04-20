@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="供应链数据分析课程 - 将数据分析应用于供应链管理">
+    <meta name="keywords" content="供应链,数据分析,需求预测,库存优化">
+    <meta name="author" content="麦脆鸡">
+    <title>供应链数据分析 - 麦脆鸡个人主页</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="style.css">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    </noscript>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">🍟</span>
+                <span>麦脆鸡</span>
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="index.html#courses" class="active">课程</a></li>
+                <li><a href="index.html#about">关于</a></li>
+            </ul>
+            <button class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 课程详情 Hero 区域 -->
+    <section class="course-hero course-hero-indigo">
+        <a href="index.html#courses" class="back-link">
+            ← 返回课程列表
+        </a>
+        <div class="course-hero-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 1h4v14h14"/>
+                <path d="M7 21h4v-4"/>
+                <circle cx="7" cy="21" r="2"/>
+                <circle cx="17" cy="21" r="2"/>
+                <circle cx="7" cy="17" r="2"/>
+            </svg>
+        </div>
+        <h1>供应链数据分析</h1>
+        <p>将数据分析技术应用于供应链管理，学习需求预测、库存优化、物流分析等实践案例。</p>
+    </section>
+
+    <!-- 课程内容 -->
+    <section class="course-content">
+        <div class="container">
+            <!-- 课程大纲 -->
+            <div class="course-outline">
+                <h2 class="section-title">课程大纲</h2>
+                <div class="outline-list">
+                    <div class="outline-item">
+                        <h3>第1章：供应链概述</h3>
+                        <ul>
+                            <li>1.1 供应链基础概念</li>
+                            <li>1.2 关键指标分析</li>
+                            <li>1.3 数据来源</li>
+                            <li>1.4 数据预处理</li>
+                        </ul>
+                    </div>
+                    <div class="outline-item">
+                        <h3>第2章：需求预测</h3>
+                        <ul>
+                            <li>2.1 时间序列分析</li>
+                            <li>2.2 移动平均法</li>
+                            <li>2.3 指数平滑法</li>
+                            <li>2.4 机器学习预测</li>
+                        </ul>
+                    </div>
+                    <div class="outline-item">
+                        <h3>第3章：库存优化</h3>
+                        <ul>
+                            <li>3.1 库存成本分析</li>
+                            <li>3.2 EOQ模型</li>
+                            <li>3.3 ABC分类</li>
+                            <li>3.4 安全库存计算</li>
+                        </ul>
+                    </div>
+                    <div class="outline-item">
+                        <h3>第4章：物流分析</h3>
+                        <ul>
+                            <li>4.1 运输路线优化</li>
+                            <li>4.2 配送网络设计</li>
+                            <li>4.3 供应商分析</li>
+                            <li>4.4 成本分析</li>
+                        </ul>
+                    </div>
+                    <div class="outline-item">
+                        <h3>第5章：实战项目</h3>
+                        <ul>
+                            <li>5.1 零售供应链分析</li>
+                            <li>5.2 制造供应链优化</li>
+                            <li>5.3 综合案例分析</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 学习内容 -->
+            <div class="learning-content">
+                <h2 class="section-title">学习内容</h2>
+                
+                <!-- 第2章：需求预测 -->
+                <div class="chapter-content">
+                    <h3>第2章：需求预测</h3>
+                    
+                    <div class="lesson">
+                        <h4>2.1-2.3 移动平均与指数平滑</h4>
+                        <p>学习使用Python实现移动平均和指数平滑预测。</p>
+                        <div class="code-example">
+                            <pre><code>import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+# 创建示例数据
+data = pd.DataFrame({
+    '月份': range(1, 13),
+    '销量': [100, 120, 110, 130, 140, 150, 145, 155, 165, 160, 170, 180]
+})
+
+# 移动平均
+data['MA3'] = data['销量'].rolling(3).mean()
+
+# 指数平滑
+data['EMA'] = data['销量'].ewm(alpha=0.3).mean()
+
+print(data)</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 第3章：库存优化 -->
+                <div class="chapter-content">
+                    <h3>第3章：库存优化</h3>
+                    
+                    <div class="lesson">
+                        <h4>3.3 ABC分类法</h4>
+                        <p>学习ABC分类方法，对库存进行优先级管理。</p>
+                        <div class="code-example">
+                            <pre><code>import pandas as pd
+
+products = pd.DataFrame({
+    '产品': ['A', 'B', 'C', 'D', 'E'],
+    '年销量': [10000, 8000, 5000, 2000, 500],
+    '单价': [100, 200, 150, 300, 400]
+})
+
+products['销售额'] = products['年销量'] * products['单价']
+products = products.sort_values('销售额', ascending=False)
+products['累计占比'] = products['销售额'].cumsum() / products['销售额'].sum()
+
+# ABC分类
+products['类别'] = pd.cut(
+    products['累计占比'],
+    bins=[0, 0.8, 0.95, 1],
+    labels=['A', 'B', 'C']
+)
+
+print(products)</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 习题 -->
+            <div class="exercises">
+                <h2 class="section-title">习题</h2>
+                
+                <div class="chapter-exercises">
+                    <h3>第2-3章：需求预测与库存优化习题</h3>
+                    
+                    <div class="exercise">
+                        <h4>习题1：销售预测</h4>
+                        <p>给定历史销售数据，使用移动平均和指数平滑方法进行预测。</p>
+                        <div class="exercise-hint">
+                            <h5>提示：</h5>
+                            <p>使用Pandas的rolling和ewm函数。</p>
+                        </div>
+                    </div>
+
+                    <div class="exercise">
+                        <h4>习题2：ABC分类</h4>
+                        <p>对给定的产品数据进行ABC分类，计算每类的占比。</p>
+                        <div class="exercise-hint">
+                            <h5>提示：</h5>
+                            <p>先按销售额排序，计算累计占比。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 麦脆鸡个人主页. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button class="back-to-top" id="back-to-top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
+
+    <script>
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // 移动端导航菜单
+        const navToggle = document.getElementById('nav-toggle');
+        const navLinks = document.getElementById('nav-links');
+
+        navToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('open');
+            navToggle.classList.toggle('open');
+        });
+
+        // 返回顶部按钮
+        const backToTopButton = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>

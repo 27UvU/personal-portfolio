@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="数据采集与处理课程 - 学习网络爬虫与数据处理">
+    <meta name="keywords" content="Python,爬虫,BeautifulSoup,Scrapy,数据采集">
+    <meta name="author" content="麦脆鸡">
+    <title>数据采集与处理 - 麦脆鸡个人主页</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="style.css">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    </noscript>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">🍟</span>
+                <span>麦脆鸡</span>
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="index.html#courses" class="active">课程</a></li>
+                <li><a href="index.html#about">关于</a></li>
+            </ul>
+            <button class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 课程详情 Hero 区域 -->
+    <section class="course-hero course-hero-pink">
+        <a href="index.html#courses" class="back-link">
+            ← 返回课程列表
+        </a>
+        <div class="course-hero-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+        </div>
+        <h1>数据采集与处理</h1>
+        <p>学习网络爬虫技术、数据清洗、数据转换，掌握BeautifulSoup、Scrapy等工具的使用。</p>
+    </section>
+
+    <!-- 课程内容 -->
+    <section class="course-content">
+        <div class="container">
+            <!-- 课程大纲 -->
+            <div class="course-outline">
+                <h2 class="section-title">课程大纲</h2>
+                <div class="outline-list">
+                    <div class="outline-item">
+                        <h3>第1章：网络基础</h3>
+                        <ul>
+                            <li>1.1 HTTP协议基础</li>
+                            <li>1.2 HTML结构</li>
+                            <li>1.3 requests库使用</li>
+                            <li>1.4 响应处理</li>
+                        </ul>
+                    </div>
+                    <div class="outline-item">
+                        <h3>第2章：BeautifulSoup解析</h3>
+                        <ul>
+                            <li>2.1 解析HTML</li>
+                            <li>2.2 选择器使用</li>
+                            <li>2.3 数据提取</li>
+                            <li>2.4 实战练习</li>
+                        </ul>
+                    </div>
+                    <div class="outline-item">
+                        <h3>第3章：Scrapy框架</h3>
+                        <ul>
+                            <li>3.1 项目创建</li>
+                            <li>3.2 Item定义</li>
+                            <li>3.3 Spider编写</li>
+                            <li>3.4 Pipeline使用</li>
+                        </ul>
+                    </div>
+                    <div class="outline-item">
+                        <h3>第4章：数据清洗</h3>
+                        <ul>
+                            <li>4.1 数据格式化</li>
+                            <li>4.2 去重处理</li>
+                            <li>4.3 异常值处理</li>
+                            <li>4.4 数据存储</li>
+                        </ul>
+                    </div>
+                    <div class="outline-item">
+                        <h3>第5章：实战项目</h3>
+                        <ul>
+                            <li>5.1 电商数据采集</li>
+                            <li>5.2 新闻资讯爬取</li>
+                            <li>5.3 综合项目</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 学习内容 -->
+            <div class="learning-content">
+                <h2 class="section-title">学习内容</h2>
+                
+                <!-- 第1章：网络基础 -->
+                <div class="chapter-content">
+                    <h3>第1章：网络基础</h3>
+                    
+                    <div class="lesson">
+                        <h4>1.3 requests库使用</h4>
+                        <p>学习使用requests库发送HTTP请求，获取网页内容。</p>
+                        <div class="code-example">
+                            <pre><code>import requests
+
+# 发送GET请求
+url = 'https://example.com'
+response = requests.get(url)
+print(response.status_code)
+print(response.text[:200])</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 第2章：BeautifulSoup解析 -->
+                <div class="chapter-content">
+                    <h3>第2章：BeautifulSoup解析</h3>
+                    
+                    <div class="lesson">
+                        <h4>2.1-2.3 使用BeautifulSoup解析HTML</h4>
+                        <p>学习使用BeautifulSoup解析HTML并提取数据。</p>
+                        <div class="code-example">
+                            <pre><code>from bs4 import BeautifulSoup
+import requests
+
+url = 'https://example.com'
+response = requests.get(url)
+soup = BeautifulSoup(response.text, 'html.parser')
+
+# 提取标题
+title = soup.title.string
+print(title)
+
+# 查找所有链接
+links = soup.find_all('a')
+for link in links:
+    print(link.get('href'))</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 习题 -->
+            <div class="exercises">
+                <h2 class="section-title">习题</h2>
+                
+                <div class="chapter-exercises">
+                    <h3>第1-2章：爬虫基础习题</h3>
+                    
+                    <div class="exercise">
+                        <h4>习题1：天气数据采集</h4>
+                        <p>编写爬虫获取天气预报网站的数据并提取信息。</p>
+                        <div class="exercise-hint">
+                            <h5>提示：</h5>
+                            <p>使用requests获取网页，BeautifulSoup解析。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 麦脆鸡个人主页. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button class="back-to-top" id="back-to-top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
+
+    <script>
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // 移动端导航菜单
+        const navToggle = document.getElementById('nav-toggle');
+        const navLinks = document.getElementById('nav-links';
+
+        navToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('open');
+            navToggle.classList.toggle('open');
+        });
+
+        // 返回顶部按钮
+        const backToTopButton = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>

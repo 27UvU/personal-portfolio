@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="数据库原理课程 - 学习数据库基础原理与SQL编程">
+    <meta name="keywords" content="数据库,SQL,MySQL,关系型数据库">
+    <meta name="author" content="麦脆鸡">
+    <title>数据库原理 - 麦脆鸡个人主页</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght=300;400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="style.css">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght=300;400;500;700&display=swap" rel="stylesheet">
+    </noscript>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">🍟</span>
+                <span>麦脆鸡</span>
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="index.html#courses" class="active">课程</a></li>
+                <li><a href="index.html#about">关于</a></li>
+            </ul>
+            <button class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 课程详情 Hero 区域 -->
+    <section class="course-hero course-hero-gray">
+        <a href="index.html#courses" class="back-link">
+            ← 返回课程列表
+        </a>
+        <div class="course-hero-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <ellipse cx="12" cy="5" rx="9" ry="3"/>
+                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+            </svg>
+        </div>
+        <h1>数据库原理</h1>
+        <p>学习数据库基础原理、SQL语言、关系型数据库设计，掌握MySQL、PostgreSQL等数据库。</p>
+    </section>
+
+    <!-- 课程内容 -->
+    <section class="course-content">
+        <div class="container">
+            <!-- 课程大纲 -->
+            <div class="course-outline">
+                <h2 class="section-title">课程大纲</h2>
+                <div class="outline-list">
+                    <div class="outline-item">
+                        <h3>第1章：数据库基础</h3>
+                        <ul>
+                            <li>1.1 数据库概述</li>
+                            <li>1.2 关系模型</li>
+                            <li>1.3 ER图设计</li>
+                            <li>1.4 规范化</li>
+                        </ul>
+                    </div>
+                    <div class="outline-item">
+                        <h3>第2章：SQL基础</h3>
+                        <ul>
+                            <li>2.1 SELECT查询</li>
+                            <li>2.2 WHERE条件</li>
+                            <li>2.3 JOIN连接</li>
+                            <li>2.4 聚合函数</li>
+                        </ul>
+                    </div>
+                    <div class="outline-item">
+                        <h3>第3章：SQL高级</h3>
+                        <ul>
+                            <li>3.1 子查询</li>
+                            <li>3.2 视图</li>
+                            <li>3.3 索引</li>
+                            <li>3.4 事务</li>
+                        </ul>
+                    </div>
+                    <div class="outline-item">
+                        <h3>第4章：数据库管理</h3>
+                        <ul>
+                            <li>4.1 用户管理</li>
+                            <li>4.2 备份恢复</li>
+                            <li>4.3 性能优化</li>
+                            <li>4.4 安全管理</li>
+                        </ul>
+                    </div>
+                    <div class="outline-item">
+                        <h3>第5章：Python与数据库</h3>
+                        <ul>
+                            <li>5.1 数据库连接</li>
+                            <li>5.2 CURD操作</li>
+                            <li>5.3 ORM框架</li>
+                            <li>5.4 实战项目</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 学习内容 -->
+            <div class="learning-content">
+                <h2 class="section-title">学习内容</h2>
+                
+                <!-- 第2章：SQL基础 -->
+                <div class="chapter-content">
+                    <h3>第2章：SQL基础</h3>
+                    
+                    <div class="lesson">
+                        <h4>2.1-2.4 SELECT查询与聚合</h4>
+                        <p>学习SQL查询语句，包括条件查询、连接查询和聚合函数。</p>
+                        <div class="code-example">
+                            <pre><code>-- 基础查询
+SELECT * FROM students;
+SELECT name, age FROM students WHERE age > 18;
+
+-- 聚合函数
+SELECT department, COUNT(*) as count, AVG(score) as avg_score
+FROM students
+GROUP BY department
+HAVING COUNT(*) > 5;
+
+-- 连接查询
+SELECT s.name, c.course_name, c.grade
+FROM students s
+JOIN course_grades c ON s.id = c.student_id;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 第5章：Python与数据库 -->
+                <div class="chapter-content">
+                    <h3>第5章：Python与数据库</h3>
+                    
+                    <div class="lesson">
+                        <h4>5.1-5.2 数据库连接与CURD操作</h4>
+                        <p>学习使用Python连接数据库并进行操作。</p>
+                        <div class="code-example">
+                            <pre><code>import sqlite3
+import pymysql
+
+# SQLite示例
+conn = sqlite3.connect('example.db')
+cursor = conn.cursor()
+
+# 创建表
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS users (
+        id INTEGER PRIMARY KEY,
+        name TEXT,
+        email TEXT
+    )
+''')
+
+# 插入数据
+cursor.execute('INSERT INTO users (name, email) VALUES (?, ?)',
+              ('张三', 'zhangsan@example.com'))
+conn.commit()
+
+# 查询数据
+cursor.execute('SELECT * FROM users')
+users = cursor.fetchall()
+for user in users:
+    print(user)
+
+conn.close()</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 习题 -->
+            <div class="exercises">
+                <h2 class="section-title">习题</h2>
+                
+                <div class="chapter-exercises">
+                    <h3>第2章：SQL基础习题</h3>
+                    
+                    <div class="exercise">
+                        <h4>习题1：学生信息查询</h4>
+                        <p>创建学生表，编写SQL查询统计各班级人数和平均分。</p>
+                        <div class="exercise-hint">
+                            <h5>提示：</h5>
+                            <p>使用GROUP BY和聚合函数。</p>
+                        </div>
+                    </div>
+
+                    <div class="exercise">
+                        <h4>习题2：多表查询</h4>
+                        <p>创建课程表和成绩表，使用JOIN查询学生的课程成绩。</p>
+                        <div class="exercise-hint">
+                            <h5>提示：</h5>
+                            <p>使用JOIN连接相关表。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chapter-exercises">
+                    <h3>第5章：Python与数据库习题</h3>
+                    
+                    <div class="exercise">
+                        <h4>习题1：学生管理系统</h4>
+                        <p>使用Python连接数据库，实现学生信息的增删改查功能。</p>
+                        <div class="exercise-hint">
+                            <h5>提示：</h5>
+                            <p>使用sqlite3或pymysql库。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 麦脆鸡个人主页. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button class="back-to-top" id="back-to-top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
+
+    <script>
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // 移动端导航菜单
+        const navToggle = document.getElementById('nav-toggle');
+        const navLinks = document.getElementById('nav-links');
+
+        navToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('open');
+            navToggle.classList.toggle('open');
+        });
+
+        // 返回顶部按钮
+        const backToTopButton = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>

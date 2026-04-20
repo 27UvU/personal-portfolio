@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="麦脆鸡的个人主页，前端开发者和教育工作者，分享前端开发课程和技术内容">
+    <meta name="keywords" content="前端开发,HTML,CSS,JavaScript,React,Vue,课程,教育">
+    <meta name="author" content="麦脆鸡">
+    <title>麦脆鸡个人主页</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF',
+                        secondary: '#F5F7FA',
+                        dark: '#333333',
+                        light: '#FFFFFF',
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans SC', 'system-ui', 'sans-serif'],
+                    },
+                },
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .card-hover {
+                transition: all 0.3s ease;
+            }
+            .card-hover:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            }
+            .animate-fade-up {
+                animation: fadeUp 0.6s ease forwards;
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            @keyframes fadeUp {
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            .delay-1 {
+                animation-delay: 0.2s;
+            }
+            .delay-2 {
+                animation-delay: 0.4s;
+            }
+            .delay-3 {
+                animation-delay: 0.6s;
+            }
+            .reveal {
+                opacity: 0;
+                transform: translateY(30px);
+                transition: all 0.8s ease;
+            }
+            .reveal.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800">
+    <!-- 导航栏 -->
+    <nav class="navbar fixed w-full z-50 bg-white transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="nav-logo flex items-center text-xl font-bold text-primary">
+                <span class="logo-icon mr-2">🍟</span>
+                <span>麦脆鸡</span>
+            </a>
+            <ul class="nav-links hidden md:flex space-x-8" id="nav-links">
+                <li><a href="#" class="text-primary font-medium">首页</a></li>
+                <li><a href="#courses" class="text-gray-600 hover:text-primary transition-colors">课程</a></li>
+                <li><a href="#about" class="text-gray-600 hover:text-primary transition-colors">关于</a></li>
+            </ul>
+            <button class="nav-toggle md:hidden text-gray-600" id="nav-toggle">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+        <!-- 移动端菜单 -->
+        <div class="md:hidden bg-white absolute w-full shadow-lg hidden" id="mobile-menu">
+            <ul class="py-4 px-6 space-y-4">
+                <li><a href="#" class="block text-primary font-medium">首页</a></li>
+                <li><a href="#courses" class="block text-gray-600 hover:text-primary transition-colors">课程</a></li>
+                <li><a href="#about" class="block text-gray-600 hover:text-primary transition-colors">关于</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero 区域 -->
+    <section class="hero min-h-screen flex items-center justify-center bg-gradient-to-r from-primary to-blue-700 text-white relative overflow-hidden">
+        <div class="hero-content text-center z-10 px-4">
+            <div class="hero-avatar animate-fade-up mb-6">
+                <div class="avatar-placeholder w-24 h-24 mx-auto rounded-full bg-white/20 flex items-center justify-center text-4xl">🍟</div>
+            </div>
+            <h1 class="hero-title animate-fade-up delay-1 text-4xl md:text-5xl font-bold mb-4">麦脆鸡</h1>
+            <p class="hero-subtitle animate-fade-up delay-2 text-xl md:text-2xl mb-8">前端开发者 & 教育工作者</p>
+            <div class="hero-tags animate-fade-up delay-3 flex flex-wrap justify-center gap-3 mb-12">
+                <span class="tag bg-white/20 px-4 py-2 rounded-full text-sm">HTML5</span>
+                <span class="tag bg-white/20 px-4 py-2 rounded-full text-sm">CSS3</span>
+                <span class="tag bg-white/20 px-4 py-2 rounded-full text-sm">JavaScript</span>
+                <span class="tag bg-white/20 px-4 py-2 rounded-full text-sm">React</span>
+                <span class="tag bg-white/20 px-4 py-2 rounded-full text-sm">Vue</span>
+            </div>
+            <div class="hero-scroll">
+                <a href="#courses" class="flex flex-col items-center text-white hover:opacity-80 transition-opacity">
+                    查看课程
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mt-2 animate-bounce">
+                        <path d="M12 5v14M19 12l-7 7-7-7"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <!-- 背景装饰 -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+        </div>
+    </section>
+
+    <!-- 课程区域 -->
+    <section class="section py-20 bg-white" id="courses">
+        <div class="container mx-auto px-4">
+            <div class="section-header reveal text-center mb-16">
+                <h2 class="section-title text-3xl md:text-4xl font-bold mb-4">我的课程</h2>
+                <p class="section-desc text-gray-600 max-w-2xl mx-auto">精心设计的前端开发与数据分析课程，帮助你快速掌握核心技能</p>
+            </div>
+            <div class="course-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="course-card bg-white rounded-xl shadow-md overflow-hidden card-hover border-t-4 border-blue-500" onclick="location.href='course-html-css.html'">
+                    <div class="p-6">
+                        <div class="card-icon text-blue-500 mb-4 text-3xl">
+                            <i class="fa fa-code"></i>
+                        </div>
+                        <h3 class="card-title text-xl font-bold mb-3">HTML & CSS 基础</h3>
+                        <p class="card-desc text-gray-600 mb-6">从零开始学习网页开发的基础知识，掌握HTML结构和CSS样式技巧，构建美观的响应式网页。</p>
+                        <div class="card-footer flex justify-between items-center">
+                            <span class="card-status bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-medium">进行中</span>
+                            <span class="card-arrow text-gray-400">→</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-card bg-white rounded-xl shadow-md overflow-hidden card-hover border-t-4 border-green-500" onclick="location.href='course-javascript.html'">
+                    <div class="p-6">
+                        <div class="card-icon text-green-500 mb-4 text-3xl">
+                            <i class="fa fa-code"></i>
+                        </div>
+                        <h3 class="card-title text-xl font-bold mb-3">JavaScript 进阶</h3>
+                        <p class="card-desc text-gray-600 mb-6">深入学习JavaScript核心概念，包括闭包、原型链、异步编程等，提升你的编程能力。</p>
+                        <div class="card-footer flex justify-between items-center">
+                            <span class="card-status bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-xs font-medium">即将上线</span>
+                            <span class="card-arrow text-gray-400">→</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-card bg-white rounded-xl shadow-md overflow-hidden card-hover border-t-4 border-purple-500" onclick="location.href='course-react.html'">
+                    <div class="p-6">
+                        <div class="card-icon text-purple-500 mb-4 text-3xl">
+                            <i class="fa fa-code"></i>
+                        </div>
+                        <h3 class="card-title text-xl font-bold mb-3">React 实战</h3>
+                        <p class="card-desc text-gray-600 mb-6">学习React框架的核心概念和最佳实践，通过实际项目掌握组件化开发和状态管理。</p>
+                        <div class="card-footer flex justify-between items-center">
+                            <span class="card-status bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-xs font-medium">即将上线</span>
+                            <span class="card-arrow text-gray-400">→</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-card bg-white rounded-xl shadow-md overflow-hidden card-hover border-t-4 border-orange-500" onclick="location.href='course-vue.html'">
+                    <div class="p-6">
+                        <div class="card-icon text-orange-500 mb-4 text-3xl">
+                            <i class="fa fa-code"></i>
+                        </div>
+                        <h3 class="card-title text-xl font-bold mb-3">Vue 开发</h3>
+                        <p class="card-desc text-gray-600 mb-6">掌握Vue.js框架的使用，学习组件开发、路由管理和状态管理，构建现代化的前端应用。</p>
+                        <div class="card-footer flex justify-between items-center">
+                            <span class="card-status bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-xs font-medium">即将上线</span>
+                            <span class="card-arrow text-gray-400">→</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-card bg-white rounded-xl shadow-md overflow-hidden card-hover border-t-4 border-teal-500" onclick="location.href='course-performance.html'">
+                    <div class="p-6">
+                        <div class="card-icon text-teal-500 mb-4 text-3xl">
+                            <i class="fa fa-tachometer"></i>
+                        </div>
+                        <h3 class="card-title text-xl font-bold mb-3">前端性能优化</h3>
+                        <p class="card-desc text-gray-600 mb-6">学习前端性能优化的各种技巧和最佳实践，提升网站加载速度和用户体验。</p>
+                        <div class="card-footer flex justify-between items-center">
+                            <span class="card-status bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-xs font-medium">即将上线</span>
+                            <span class="card-arrow text-gray-400">→</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-card bg-white rounded-xl shadow-md overflow-hidden card-hover border-t-4 border-yellow-400" onclick="location.href='course-python.html'">
+                    <div class="p-6">
+                        <div class="card-icon text-yellow-400 mb-4 text-3xl">
+                            <i class="fa fa-python"></i>
+                        </div>
+                        <h3 class="card-title text-xl font-bold mb-3">Python 基础</h3>
+                        <p class="card-desc text-gray-600 mb-6">从零开始学习Python编程语言，掌握基本语法、数据结构、函数和面向对象编程。</p>
+                        <div class="card-footer flex justify-between items-center">
+                            <span class="card-status bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-medium">进行中</span>
+                            <span class="card-arrow text-gray-400">→</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-card bg-white rounded-xl shadow-md overflow-hidden card-hover border-t-4 border-cyan-500" onclick="location.href='course-data-analysis.html'">
+                    <div class="p-6">
+                        <div class="card-icon text-cyan-500 mb-4 text-3xl">
+                            <i class="fa fa-bar-chart"></i>
+                        </div>
+                        <h3 class="card-title text-xl font-bold mb-3">数据分析技术</h3>
+                        <p class="card-desc text-gray-600 mb-6">学习使用Python进行数据分析，掌握Numpy、Pandas、Matplotlib等数据处理和可视化工具。</p>
+                        <div class="card-footer flex justify-between items-center">
+                            <span class="card-status bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-xs font-medium">即将上线</span>
+                            <span class="card-arrow text-gray-400">→</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-card bg-white rounded-xl shadow-md overflow-hidden card-hover border-t-4 border-pink-500" onclick="location.href='course-data-collection.html'">
+                    <div class="p-6">
+                        <div class="card-icon text-pink-500 mb-4 text-3xl">
+                            <i class="fa fa-database"></i>
+                        </div>
+                        <h3 class="card-title text-xl font-bold mb-3">数据采集与处理</h3>
+                        <p class="card-desc text-gray-600 mb-6">学习网络爬虫技术、数据清洗、数据转换，掌握BeautifulSoup、Scrapy等工具的使用。</p>
+                        <div class="card-footer flex justify-between items-center">
+                            <span class="card-status bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-xs font-medium">即将上线</span>
+                            <span class="card-arrow text-gray-400">→</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-card bg-white rounded-xl shadow-md overflow-hidden card-hover border-t-4 border-indigo-500" onclick="location.href='course-supply-chain.html'">
+                    <div class="p-6">
+                        <div class="card-icon text-indigo-500 mb-4 text-3xl">
+                            <i class="fa fa-truck"></i>
+                        </div>
+                        <h3 class="card-title text-xl font-bold mb-3">供应链数据分析</h3>
+                        <p class="card-desc text-gray-600 mb-6">将数据分析技术应用于供应链管理，学习需求预测、库存优化、物流分析等实践案例。</p>
+                        <div class="card-footer flex justify-between items-center">
+                            <span class="card-status bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-xs font-medium">即将上线</span>
+                            <span class="card-arrow text-gray-400">→</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-card bg-white rounded-xl shadow-md overflow-hidden card-hover border-t-4 border-gray-500" onclick="location.href='course-database.html'">
+                    <div class="p-6">
+                        <div class="card-icon text-gray-500 mb-4 text-3xl">
+                            <i class="fa fa-database"></i>
+                        </div>
+                        <h3 class="card-title text-xl font-bold mb-3">数据库原理</h3>
+                        <p class="card-desc text-gray-600 mb-6">学习数据库基础原理、SQL语言、关系型数据库设计，掌握MySQL、PostgreSQL等数据库。</p>
+                        <div class="card-footer flex justify-between items-center">
+                            <span class="card-status bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-xs font-medium">即将上线</span>
+                            <span class="card-arrow text-gray-400">→</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于区域 -->
+    <section class="section py-20 bg-gray-50" id="about">
+        <div class="container mx-auto px-4">
+            <div class="section-header reveal text-center mb-16">
+                <h2 class="section-title text-3xl md:text-4xl font-bold mb-4">关于我</h2>
+                <p class="section-desc text-gray-600 max-w-2xl mx-auto">专注于前端开发与数据分析，致力于分享高质量的技术内容</p>
+            </div>
+            <div class="about-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="about-card reveal bg-white rounded-xl shadow-md p-8 text-center">
+                    <div class="about-icon text-4xl mb-4">🎓</div>
+                    <h3 class="text-lg font-semibold mb-2">教育背景</h3>
+                    <p class="text-gray-600">广东科学技术职业学院</p>
+                </div>
+                <div class="about-card reveal bg-white rounded-xl shadow-md p-8 text-center">
+                    <div class="about-icon text-4xl mb-4">🏫</div>
+                    <h3 class="text-lg font-semibold mb-2">学院</h3>
+                    <p class="text-gray-600">商学院</p>
+                </div>
+                <div class="about-card reveal bg-white rounded-xl shadow-md p-8 text-center">
+                    <div class="about-icon text-4xl mb-4">📊</div>
+                    <h3 class="text-lg font-semibold mb-2">专业</h3>
+                    <p class="text-gray-600">商务数据分析与应用</p>
+                </div>
+                <div class="about-card reveal bg-white rounded-xl shadow-md p-8 text-center">
+                    <div class="about-icon text-4xl mb-4">💡</div>
+                    <h3 class="text-lg font-semibold mb-2">技能方向</h3>
+                    <p class="text-gray-600">前端开发 & 数据分析</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 返回顶部按钮 -->
+    <button class="back-to-top fixed bottom-8 right-8 bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300" id="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+
+    <!-- 页脚 -->
+    <footer class="footer bg-dark text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2026 麦脆鸡个人主页. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-white/95', 'backdrop-blur-sm', 'shadow-md');
+            } else {
+                navbar.classList.remove('bg-white/95', 'backdrop-blur-sm', 'shadow-md');
+            }
+        });
+
+        // 移动端导航菜单
+        const navToggle = document.getElementById('nav-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        navToggle.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 滚动动画
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            for (let i = 0; i < reveals.length; i++) {
+                const windowHeight = window.innerHeight;
+                const elementTop = reveals[i].getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('visible');
+                }
+            }
+        }
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // 初始检查
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // 关闭移动端菜单
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // 返回顶部按钮
+        const backToTopButton = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.add('opacity-0', 'invisible');
+                backToTopButton.classList.remove('opacity-100', 'visible');
+            }
+        });
+
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>

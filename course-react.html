@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="React 实战课程 - 学习React框架的核心概念和最佳实践">
+    <meta name="keywords" content="React,前端,框架,组件化,状态管理,实战">
+    <meta name="author" content="麦脆鸡">
+    <title>React 实战 - 麦脆鸡个人主页</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="style.css">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    </noscript>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">🍟</span>
+                <span>麦脆鸡</span>
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="index.html#courses" class="active">课程</a></li>
+                <li><a href="index.html#about">关于</a></li>
+            </ul>
+            <button class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 课程详情 Hero 区域 -->
+    <section class="course-hero course-hero-purple">
+        <a href="index.html#courses" class="back-link">
+            ← 返回课程列表
+        </a>
+        <div class="course-hero-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                <line x1="8" y1="21" x2="16" y2="21"/>
+                <line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+        </div>
+        <h1>React 实战</h1>
+        <p>学习React框架的核心概念和最佳实践，通过实际项目掌握组件化开发和状态管理。</p>
+    </section>
+
+    <!-- 课程内容 -->
+    <section class="course-content">
+        <div class="container">
+            <!-- 课程大纲 -->
+            <div class="course-outline">
+                <h2 class="section-title">课程大纲</h2>
+                <div class="outline-list">
+                    <div class="outline-item">
+                        <h3>第1章：React基础</h3>
+                        <ul>
+                            <li>1.1 React简介与环境搭建</li>
+                            <li>1.2 JSX语法</li>
+                            <li>1.3 组件基础</li>
+                            <li>1.4 Props与State</li>
+                        </ul>
+                    </div>
+                    <div class="outline-item">
+                        <h3>第2章：React组件进阶</h3>
+                        <ul>
+                            <li>2.1 组件生命周期</li>
+                            <li>2.2 事件处理</li>
+                            <li>2.3 条件渲染</li>
+                            <li>2.4 列表渲染</li>
+                        </ul>
+                    </div>
+                    <div class="outline-item">
+                        <h3>第3章：状态管理</h3>
+                        <ul>
+                            <li>3.1 组件状态管理</li>
+                            <li>3.2 Context API</li>
+                            <li>3.3 Redux基础</li>
+                            <li>3.4 Redux Toolkit</li>
+                        </ul>
+                    </div>
+                    <div class="outline-item">
+                        <h3>第4章：React路由</h3>
+                        <ul>
+                            <li>4.1 React Router基础</li>
+                            <li>4.2 路由配置</li>
+                            <li>4.3 嵌套路由</li>
+                            <li>4.4 路由守卫</li>
+                        </ul>
+                    </div>
+                    <div class="outline-item">
+                        <h3>第5章：React实战项目</h3>
+                        <ul>
+                            <li>5.1 待办事项应用</li>
+                            <li>5.2 博客系统</li>
+                            <li>5.3 电商购物车</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 学习内容 -->
+            <div class="learning-content">
+                <h2 class="section-title">学习内容</h2>
+                
+                <!-- 第1章：React基础 -->
+                <div class="chapter-content">
+                    <h3>第1章：React基础</h3>
+                    
+                    <div class="lesson">
+                        <h4>1.1 React简介与环境搭建</h4>
+                        <p>了解React的基本概念、特点和优势，以及如何搭建React开发环境。</p>
+                        <div class="code-example">
+                            <pre><code>// 使用Vite创建React项目
+npm create vite@latest my-react-app -- --template react
+
+// 进入项目目录
+cd my-react-app
+
+// 安装依赖
+npm install
+
+// 启动开发服务器
+npm run dev</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="lesson">
+                        <h4>1.2 JSX语法</h4>
+                        <p>学习JSX语法的基本规则和使用方法。</p>
+                        <div class="code-example">
+                            <pre><code>// JSX示例
+import React from 'react';
+
+function Hello() {
+    return (
+        &lt;div&gt;
+            &lt;h1&gt;Hello, React!&lt;/h1&gt;
+            &lt;p&gt;This is a JSX example.&lt;/p&gt;
+        &lt;/div&gt;
+    );
+}
+
+export default Hello;</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="lesson">
+                        <h4>1.3 组件基础</h4>
+                        <p>学习React组件的创建和使用方法。</p>
+                    </div>
+
+                    <div class="lesson">
+                        <h4>1.4 Props与State</h4>
+                        <p>理解Props和State的概念，以及它们在组件中的作用。</p>
+                    </div>
+                </div>
+
+                <!-- 第2章：React组件进阶 -->
+                <div class="chapter-content">
+                    <h3>第2章：React组件进阶</h3>
+                    
+                    <div class="lesson">
+                        <h4>2.1 组件生命周期</h4>
+                        <p>学习React组件的生命周期方法及其使用场景。</p>
+                    </div>
+
+                    <div class="lesson">
+                        <h4>2.2 事件处理</h4>
+                        <p>学习React中的事件处理方法。</p>
+                        <div class="code-example">
+                            <pre><code>// 事件处理示例
+import React, { useState } from 'react';
+
+function Counter() {
+    const [count, setCount] = useState(0);
+
+    const handleClick = () => {
+        setCount(count + 1);
+    };
+
+    return (
+        &lt;div&gt;
+            &lt;p&gt;Count: {count}&lt;/p&gt;
+            &lt;button onClick={handleClick}&gt;Increment&lt;/button&gt;
+        &lt;/div&gt;
+    );
+}
+
+export default Counter;</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="lesson">
+                        <h4>2.3 条件渲染</h4>
+                        <p>学习React中的条件渲染方法。</p>
+                    </div>
+
+                    <div class="lesson">
+                        <h4>2.4 列表渲染</h4>
+                        <p>学习React中的列表渲染方法。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 习题 -->
+            <div class="exercises">
+                <h2 class="section-title">习题</h2>
+                
+                <!-- 第1章习题 -->
+                <div class="chapter-exercises">
+                    <h3>第1章：React基础习题</h3>
+                    
+                    <div class="exercise">
+                        <h4>习题1：创建基本React组件</h4>
+                        <p>创建一个简单的React组件，显示你的名字和年龄。</p>
+                        <div class="exercise-hint">
+                            <h5>提示：</h5>
+                            <p>使用函数组件和JSX语法。</p>
+                        </div>
+                    </div>
+
+                    <div class="exercise">
+                        <h4>习题2：使用Props</h4>
+                        <p>创建一个接受Props的组件，显示传入的数据。</p>
+                        <div class="exercise-hint">
+                            <h5>提示：</h5>
+                            <p>在组件中使用props参数接收数据。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 第2章习题 -->
+                <div class="chapter-exercises">
+                    <h3>第2章：React组件进阶习题</h3>
+                    
+                    <div class="exercise">
+                        <h4>习题1：状态管理练习</h4>
+                        <p>创建一个计数器组件，使用useState钩子管理状态。</p>
+                        <div class="exercise-hint">
+                            <h5>提示：</h5>
+                            <p>使用useState钩子创建状态变量和更新函数。</p>
+                        </div>
+                    </div>
+
+                    <div class="exercise">
+                        <h4>习题2：条件渲染练习</h4>
+                        <p>创建一个组件，根据条件显示不同的内容。</p>
+                        <div class="exercise-hint">
+                            <h5>提示：</h5>
+                            <p>使用if语句或三元运算符进行条件渲染。</p>
+                        </div>
+                    </div>
+
+                    <div class="exercise">
+                        <h4>习题3：列表渲染练习</h4>
+                        <p>创建一个组件，渲染一个数组中的数据。</p>
+                        <div class="exercise-hint">
+                            <h5>提示：</h5>
+                            <p>使用map方法进行列表渲染。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 麦脆鸡个人主页. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button class="back-to-top" id="back-to-top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
+
+    <script>
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // 移动端导航菜单
+        const navToggle = document.getElementById('nav-toggle');
+        const navLinks = document.getElementById('nav-links');
+
+        navToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('open');
+            navToggle.classList.toggle('open');
+        });
+
+        // 返回顶部按钮
+        const backToTopButton = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>

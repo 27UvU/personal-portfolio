@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Python基础课程 - 从零开始学习Python编程语言">
+    <meta name="keywords" content="Python,编程,数据分析,入门,基础">
+    <meta name="author" content="麦脆鸡">
+    <title>Python 基础 - 麦脆鸡个人主页</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="style.css">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    </noscript>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">🍟</span>
+                <span>麦脆鸡</span>
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="index.html#courses" class="active">课程</a></li>
+                <li><a href="index.html#about">关于</a></li>
+            </ul>
+            <button class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 课程详情 Hero 区域 -->
+    <section class="course-hero course-hero-blue">
+        <a href="index.html#courses" class="back-link">
+            ← 返回课程列表
+        </a>
+        <div class="course-hero-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2a10 10 0 0 0-3.2 19.4.5.5 0 0 0 .7-.4v-3.4a4.2 4.2 0 0 1-1.1-.7c-.4.5-1.1.8-1.6.8a2.5 2.5 0 0 1-.4-4.9c.9.1 1.9-.4 2.5-1a3 3 0 0 1 5 0c.6.6 1.6 1.1 2.5 1a2.5 2.5 0 0 1-.4 4.9c-.5 0-1.2-.3-1.6-.8a4.2 4.2 0 0 1-1.1.7v3.4a.5.5 0 0 0 .7.4A10 10 0 0 0 12 2z"/>
+            </svg>
+        </div>
+        <h1>Python 基础</h1>
+        <p>从零开始学习Python编程语言，掌握基本语法、数据结构、函数和面向对象编程。</p>
+    </section>
+
+    <!-- 课程内容 -->
+    <section class="course-content">
+        <div class="container">
+            <!-- 课程大纲 -->
+            <div class="course-outline">
+                <h2 class="section-title">课程大纲</h2>
+                <div class="outline-list">
+                    <div class="outline-item">
+                        <h3>第1章：Python入门</h3>
+                        <ul>
+                            <li>1.1 Python简介与安装</li>
+                            <li>1.2 第一个Python程序</li>
+                            <li>1.3 变量与数据类型</li>
+                            <li>1.4 输入与输出</li>
+                        </ul>
+                    </div>
+                    <div class="outline-item">
+                        <h3>第2章：流程控制</h3>
+                        <ul>
+                            <li>2.1 条件语句（if、elif、else）</li>
+                            <li>2.2 循环语句（for、while）</li>
+                            <li>2.3 循环控制（break、continue）</li>
+                            <li>2.4 异常处理</li>
+                        </ul>
+                    </div>
+                    <div class="outline-item">
+                        <h3>第3章：数据结构</h3>
+                        <ul>
+                            <li>3.1 列表（List）</li>
+                            <li>3.2 元组（Tuple）</li>
+                            <li>3.3 字典（Dictionary）</li>
+                            <li>3.4 集合（Set）</li>
+                        </ul>
+                    </div>
+                    <div class="outline-item">
+                        <h3>第4章：函数与模块</h3>
+                        <ul>
+                            <li>4.1 函数定义与调用</li>
+                            <li>4.2 参数传递与返回值</li>
+                            <li>4.3 模块与包</li>
+                            <li>4.4 常用标准库</li>
+                        </ul>
+                    </div>
+                    <div class="outline-item">
+                        <h3>第5章：面向对象编程</h3>
+                        <ul>
+                            <li>5.1 类与对象</li>
+                            <li>5.2 属性与方法</li>
+                            <li>5.3 继承与多态</li>
+                            <li>5.4 实战项目：数据管理系统</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 学习内容 -->
+            <div class="learning-content">
+                <h2 class="section-title">学习内容</h2>
+                
+                <!-- 第1章：Python入门 -->
+                <div class="chapter-content">
+                    <h3>第1章：Python入门</h3>
+                    
+                    <div class="lesson">
+                        <h4>1.1 Python简介与安装</h4>
+                        <p>了解Python的特点、应用领域，学习如何安装Python配置开发环境。</p>
+                        <div class="code-example">
+                            <pre><code># Python 安装后检查版本
+python --version
+
+# 或
+python3 --version</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="lesson">
+                        <h4>1.2 第一个Python程序</h4>
+                        <p>学习如何编写并运行第一个Python程序，了解代码结构。</p>
+                        <div class="code-example">
+                            <pre><code># 第一个 Python 程序
+print("Hello, World!")
+print("欢迎学习 Python 编程！")</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="lesson">
+                        <h4>1.3 变量与数据类型</h4>
+                        <p>学习变量的命名规则、Python的基本数据类型。</p>
+                        <div class="code-example">
+                            <pre><code># 变量与数据类型
+name = "张三"          # 字符串
+age = 20              # 整数
+height = 1.75         # 浮点数
+is_student = True     # 布尔值
+
+# 输出变量值
+print(f"姓名：{name}")
+print(f"年龄：{age}")
+print(f"身高：{height}米")</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 第2章：流程控制 -->
+                <div class="chapter-content">
+                    <h3>第2章：流程控制</h3>
+                    
+                    <div class="lesson">
+                        <h4>2.1 条件语句</h4>
+                        <p>学习使用条件语句进行逻辑判断。</p>
+                        <div class="code-example">
+                            <pre><code># 条件语句示例
+score = 85
+
+if score >= 90:
+    print("优秀")
+elif score >= 80:
+    print("良好")
+elif score >= 60:
+    print("及格")
+else:
+    print("不及格")</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="lesson">
+                        <h4>2.2 循环语句</h4>
+                        <p>学习使用for循环和while循环进行重复操作。</p>
+                        <div class="code-example">
+                            <pre><code># for循环示例
+for i in range(1, 6):
+    print(f"第{i}次循环")
+
+# while循环示例
+count = 0
+while count < 5:
+    print(f"计数：{count}")
+    count += 1</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 习题 -->
+            <div class="exercises">
+                <h2 class="section-title">习题</h2>
+                
+                <!-- 第1章习题 -->
+                <div class="chapter-exercises">
+                    <h3>第1章：Python入门习题</h3>
+                    
+                    <div class="exercise">
+                        <h4>习题1：个人信息输出</h4>
+                        <p>定义变量存储你的姓名、年龄、学校，然后格式化输出这些信息。</p>
+                        <div class="exercise-hint">
+                            <h5>提示：</h5>
+                            <p>使用字符串格式化（f-string）来组织输出内容。</p>
+                        </div>
+                    </div>
+
+                    <div class="exercise">
+                        <h4>习题2：简单计算器</h4>
+                        <p>编写程序，输入两个数字，输出它们的和、差、积、商。</p>
+                        <div class="exercise-hint">
+                            <h5>提示：</h5>
+                            <p>使用 input() 函数获取用户输入，注意转换为数值类型。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 第2章习题 -->
+                <div class="chapter-exercises">
+                    <h3>第2章：流程控制习题</h3>
+                    
+                    <div class="exercise">
+                        <h4>习题1：成绩等级判定</h4>
+                        <p>输入一个分数，输出对应的等级（A/B/C/D/E）。</p>
+                        <div class="exercise-hint">
+                            <h5>提示：</h5>
+                            <p>使用 if-elif-else 语句进行多条件判断。</p>
+                        </div>
+                    </div>
+
+                    <div class="exercise">
+                        <h4>习题2：九九乘法表</h4>
+                        <p>使用嵌套循环打印九九乘法表。</p>
+                        <div class="exercise-hint">
+                            <h5>提示：</h5>
+                            <p>外层循环控制行数，内层循环控制每行的列数。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 麦脆鸡个人主页. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button class="back-to-top" id="back-to-top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
+
+    <script>
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // 移动端导航菜单
+        const navToggle = document.getElementById('nav-toggle');
+        const navLinks = document.getElementById('nav-links');
+
+        navToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('open');
+            navToggle.classList.toggle('open');
+        });
+
+        // 返回顶部按钮
+        const backToTopButton = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>

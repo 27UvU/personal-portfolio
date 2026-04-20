@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HTML & CSS 基础课程 - 从零开始学习网页开发的基础知识">
+    <meta name="keywords" content="HTML,CSS,网页开发,前端,基础课程">
+    <meta name="author" content="麦脆鸡">
+    <title>HTML & CSS 基础 - 麦脆鸡个人主页</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="style.css">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    </noscript>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">🍟</span>
+                <span>麦脆鸡</span>
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="index.html#courses" class="active">课程</a></li>
+                <li><a href="index.html#about">关于</a></li>
+            </ul>
+            <button class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 课程详情 Hero 区域 -->
+    <section class="course-hero course-hero-blue">
+        <a href="index.html#courses" class="back-link">
+            ← 返回课程列表
+        </a>
+        <div class="course-hero-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                <path d="M2 17l10 5 10-5"/>
+                <path d="M2 12l10 5 10-5"/>
+            </svg>
+        </div>
+        <h1>HTML & CSS 基础</h1>
+        <p>从零开始学习网页开发的基础知识，掌握HTML结构和CSS样式技巧，构建美观的响应式网页。</p>
+    </section>
+
+    <!-- 课程内容 -->
+    <section class="course-content">
+        <div class="container">
+            <!-- 课程大纲 -->
+            <div class="course-outline">
+                <h2 class="section-title">课程大纲</h2>
+                <div class="outline-list">
+                    <div class="outline-item">
+                        <h3>第1章：HTML基础</h3>
+                        <ul>
+                            <li>1.1 HTML简介与历史</li>
+                            <li>1.2 HTML基本结构</li>
+                            <li>1.3 常用HTML标签</li>
+                            <li>1.4 语义化标签</li>
+                            <li>1.5 HTML表单</li>
+                        </ul>
+                    </div>
+                    <div class="outline-item">
+                        <h3>第2章：CSS基础</h3>
+                        <ul>
+                            <li>2.1 CSS简介</li>
+                            <li>2.2 CSS选择器</li>
+                            <li>2.3 CSS样式属性</li>
+                            <li>2.4 盒模型</li>
+                            <li>2.5 浮动与定位</li>
+                        </ul>
+                    </div>
+                    <div class="outline-item">
+                        <h3>第3章：CSS布局</h3>
+                        <ul>
+                            <li>3.1 Flexbox布局</li>
+                            <li>3.2 Grid布局</li>
+                            <li>3.3 响应式设计</li>
+                            <li>3.4 媒体查询</li>
+                        </ul>
+                    </div>
+                    <div class="outline-item">
+                        <h3>第4章：CSS高级特性</h3>
+                        <ul>
+                            <li>4.1 CSS动画</li>
+                            <li>4.2 过渡效果</li>
+                            <li>4.3 变量与函数</li>
+                            <li>4.4 预处理器简介</li>
+                        </ul>
+                    </div>
+                    <div class="outline-item">
+                        <h3>第5章：实战项目</h3>
+                        <ul>
+                            <li>5.1 个人作品集网站</li>
+                            <li>5.2 响应式博客页面</li>
+                            <li>5.3 企业 landing page</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 学习内容 -->
+            <div class="learning-content">
+                <h2 class="section-title">学习内容</h2>
+                
+                <!-- 第1章：HTML基础 -->
+                <div class="chapter-content">
+                    <h3>第1章：HTML基础</h3>
+                    
+                    <div class="lesson">
+                        <h4>1.1 HTML简介与历史</h4>
+                        <p>HTML（HyperText Markup Language）是用于创建网页的标准标记语言。本节将介绍HTML的发展历史、版本演进以及其在网页开发中的重要性。</p>
+                        <div class="code-example">
+                            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-CN"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;我的第一个网页&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Hello World!&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="lesson">
+                        <h4>1.2 HTML基本结构</h4>
+                        <p>了解HTML文档的基本结构，包括DOCTYPE声明、html、head和body标签的作用。</p>
+                    </div>
+
+                    <div class="lesson">
+                        <h4>1.3 常用HTML标签</h4>
+                        <p>学习常用的HTML标签，如标题标签（h1-h6）、段落标签（p）、链接标签（a）、图片标签（img）等。</p>
+                    </div>
+
+                    <div class="lesson">
+                        <h4>1.4 语义化标签</h4>
+                        <p>了解HTML5引入的语义化标签，如header、nav、section、article、footer等，以及它们在网页结构中的应用。</p>
+                    </div>
+
+                    <div class="lesson">
+                        <h4>1.5 HTML表单</h4>
+                        <p>学习HTML表单的创建，包括表单元素（input、textarea、select等）和表单属性。</p>
+                    </div>
+                </div>
+
+                <!-- 第2章：CSS基础 -->
+                <div class="chapter-content">
+                    <h3>第2章：CSS基础</h3>
+                    
+                    <div class="lesson">
+                        <h4>2.1 CSS简介</h4>
+                        <p>CSS（Cascading Style Sheets）用于描述HTML元素的显示方式。本节将介绍CSS的基本概念和作用。</p>
+                    </div>
+
+                    <div class="lesson">
+                        <h4>2.2 CSS选择器</h4>
+                        <p>学习CSS选择器的种类和使用方法，包括元素选择器、类选择器、ID选择器、后代选择器等。</p>
+                        <div class="code-example">
+                            <pre><code>/* 元素选择器 */
+p {
+    color: #333;
+}
+
+/* 类选择器 */
+.button {
+    background-color: #2563eb;
+    color: white;
+}
+
+/* ID选择器 */
+#header {
+    font-size: 24px;
+}</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="lesson">
+                        <h4>2.3 CSS样式属性</h4>
+                        <p>学习常用的CSS样式属性，如颜色、字体、边距、背景等。</p>
+                    </div>
+
+                    <div class="lesson">
+                        <h4>2.4 盒模型</h4>
+                        <p>了解CSS盒模型的概念，包括内容区、内边距、边框和外边距。</p>
+                    </div>
+
+                    <div class="lesson">
+                        <h4>2.5 浮动与定位</h4>
+                        <p>学习CSS的浮动（float）和定位（position）属性，以及它们在布局中的应用。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 习题 -->
+            <div class="exercises">
+                <h2 class="section-title">习题</h2>
+                
+                <!-- 第1章习题 -->
+                <div class="chapter-exercises">
+                    <h3>第1章：HTML基础习题</h3>
+                    
+                    <div class="exercise">
+                        <h4>习题1：创建基本HTML结构</h4>
+                        <p>创建一个包含标题、段落、链接和图片的基本HTML页面。</p>
+                        <div class="exercise-hint">
+                            <h5>提示：</h5>
+                            <p>使用h1-h6标签创建标题，p标签创建段落，a标签创建链接，img标签添加图片。</p>
+                        </div>
+                    </div>
+
+                    <div class="exercise">
+                        <h4>习题2：创建语义化HTML结构</h4>
+                        <p>使用HTML5语义化标签创建一个包含页眉、导航栏、主要内容和页脚的网页结构。</p>
+                        <div class="exercise-hint">
+                            <h5>提示：</h5>
+                            <p>使用header、nav、main、section、article、footer等语义化标签。</p>
+                        </div>
+                    </div>
+
+                    <div class="exercise">
+                        <h4>习题3：创建HTML表单</h4>
+                        <p>创建一个包含文本输入框、密码输入框、单选按钮、复选框和提交按钮的表单。</p>
+                        <div class="exercise-hint">
+                            <h5>提示：</h5>
+                            <p>使用form、input、label、button等标签创建表单。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 第2章习题 -->
+                <div class="chapter-exercises">
+                    <h3>第2章：CSS基础习题</h3>
+                    
+                    <div class="exercise">
+                        <h4>习题1：基本CSS样式</h4>
+                        <p>为上一章创建的HTML页面添加CSS样式，设置字体、颜色、边距等。</p>
+                        <div class="exercise-hint">
+                            <h5>提示：</h5>
+                            <p>使用内联样式、内部样式表或外部样式表为HTML元素添加样式。</p>
+                        </div>
+                    </div>
+
+                    <div class="exercise">
+                        <h4>习题2：CSS选择器练习</h4>
+                        <p>使用不同类型的CSS选择器为页面中的元素添加不同的样式。</p>
+                        <div class="exercise-hint">
+                            <h5>提示：</h5>
+                            <p>尝试使用元素选择器、类选择器、ID选择器、后代选择器等。</p>
+                        </div>
+                    </div>
+
+                    <div class="exercise">
+                        <h4>习题3：盒模型练习</h4>
+                        <p>创建一个带有内边距、边框和外边距的元素，并观察盒模型的效果。</p>
+                        <div class="exercise-hint">
+                            <h5>提示：</h5>
+                            <p>使用padding、border、margin属性设置盒模型的各个部分。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 麦脆鸡个人主页. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button class="back-to-top" id="back-to-top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
+
+    <script>
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // 移动端导航菜单
+        const navToggle = document.getElementById('nav-toggle');
+        const navLinks = document.getElementById('nav-links');
+
+        navToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('open');
+            navToggle.classList.toggle('open');
+        });
+
+        // 返回顶部按钮
+        const backToTopButton = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>

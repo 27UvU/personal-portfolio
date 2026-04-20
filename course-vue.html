@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vue 开发课程 - 掌握Vue.js框架的使用，学习组件开发、路由管理和状态管理">
+    <meta name="keywords" content="Vue,Vue.js,前端,框架,组件化,路由,状态管理">
+    <meta name="author" content="麦脆鸡">
+    <title>Vue 开发 - 麦脆鸡个人主页</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="style.css">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    </noscript>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">🍟</span>
+                <span>麦脆鸡</span>
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="index.html#courses" class="active">课程</a></li>
+                <li><a href="index.html#about">关于</a></li>
+            </ul>
+            <button class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 课程详情 Hero 区域 -->
+    <section class="course-hero course-hero-orange">
+        <a href="index.html#courses" class="back-link">
+            ← 返回课程列表
+        </a>
+        <div class="course-hero-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+                <polyline points="10 9 9 9 8 9"/>
+            </svg>
+        </div>
+        <h1>Vue 开发</h1>
+        <p>掌握Vue.js框架的使用，学习组件开发、路由管理和状态管理，构建现代化的前端应用。</p>
+    </section>
+
+    <!-- 课程内容 -->
+    <section class="course-content">
+        <div class="container">
+            <!-- 课程大纲 -->
+            <div class="course-outline">
+                <h2 class="section-title">课程大纲</h2>
+                <div class="outline-list">
+                    <div class="outline-item">
+                        <h3>第1章：Vue基础</h3>
+                        <ul>
+                            <li>1.1 Vue简介与环境搭建</li>
+                            <li>1.2 模板语法</li>
+                            <li>1.3 响应式数据</li>
+                            <li>1.4 计算属性与侦听器</li>
+                        </ul>
+                    </div>
+                    <div class="outline-item">
+                        <h3>第2章：Vue组件</h3>
+                        <ul>
+                            <li>2.1 组件基础</li>
+                            <li>2.2 组件通信</li>
+                            <li>2.3 插槽</li>
+                            <li>2.4 动态组件</li>
+                        </ul>
+                    </div>
+                    <div class="outline-item">
+                        <h3>第3章：Vue路由</h3>
+                        <ul>
+                            <li>3.1 Vue Router基础</li>
+                            <li>3.2 路由配置</li>
+                            <li>3.3 嵌套路由</li>
+                            <li>3.4 路由守卫</li>
+                        </ul>
+                    </div>
+                    <div class="outline-item">
+                        <h3>第4章：状态管理</h3>
+                        <ul>
+                            <li>4.1 组件状态管理</li>
+                            <li>4.2 Vuex基础</li>
+                            <li>4.3 Vuex高级特性</li>
+                            <li>4.4 Pinia</li>
+                        </ul>
+                    </div>
+                    <div class="outline-item">
+                        <h3>第5章：Vue实战项目</h3>
+                        <ul>
+                            <li>5.1 待办事项应用</li>
+                            <li>5.2 电商网站</li>
+                            <li>5.3 管理后台</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 学习内容 -->
+            <div class="learning-content">
+                <h2 class="section-title">学习内容</h2>
+                
+                <!-- 第1章：Vue基础 -->
+                <div class="chapter-content">
+                    <h3>第1章：Vue基础</h3>
+                    
+                    <div class="lesson">
+                        <h4>1.1 Vue简介与环境搭建</h4>
+                        <p>了解Vue的基本概念、特点和优势，以及如何搭建Vue开发环境。</p>
+                        <div class="code-example">
+                            <pre><code>// 使用Vite创建Vue项目
+npm create vite@latest my-vue-app -- --template vue
+
+// 进入项目目录
+cd my-vue-app
+
+// 安装依赖
+npm install
+
+// 启动开发服务器
+npm run dev</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="lesson">
+                        <h4>1.2 模板语法</h4>
+                        <p>学习Vue的模板语法，包括插值、指令、事件处理等。</p>
+                        <div class="code-example">
+                            <pre><code>&lt;!-- Vue模板示例 --&gt;
+&lt;template&gt;
+    &lt;div&gt;
+        &lt;h1&gt;{{ title }}&lt;/h1&gt;
+        &lt;p&gt;{{ message }}&lt;/p&gt;
+        &lt;button @click="handleClick"&gt;点击我&lt;/button&gt;
+        &lt;input v-model="inputValue" placeholder="输入内容"&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+    data() {
+        return {
+            title: 'Hello Vue!',
+            message: 'Welcome to Vue.js',
+            inputValue: ''
+        };
+    },
+    methods: {
+        handleClick() {
+            alert('按钮被点击了！');
+        }
+    }
+};
+&lt;/script&gt;</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="lesson">
+                        <h4>1.3 响应式数据</h4>
+                        <p>理解Vue的响应式数据原理。</p>
+                    </div>
+
+                    <div class="lesson">
+                        <h4>1.4 计算属性与侦听器</h4>
+                        <p>学习计算属性和侦听器的使用方法。</p>
+                    </div>
+                </div>
+
+                <!-- 第2章：Vue组件 -->
+                <div class="chapter-content">
+                    <h3>第2章：Vue组件</h3>
+                    
+                    <div class="lesson">
+                        <h4>2.1 组件基础</h4>
+                        <p>学习Vue组件的创建和使用方法。</p>
+                    </div>
+
+                    <div class="lesson">
+                        <h4>2.2 组件通信</h4>
+                        <p>学习Vue组件之间的通信方式，包括props、事件、provide/inject等。</p>
+                        <div class="code-example">
+                            <pre><code>// 父组件
+&lt;template&gt;
+    &lt;div&gt;
+        &lt;ChildComponent :message="parentMessage" @update="handleUpdate" /&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import ChildComponent from './ChildComponent.vue';
+
+export default {
+    components: {
+        ChildComponent
+    },
+    data() {
+        return {
+            parentMessage: 'Hello from parent'
+        };
+    },
+    methods: {
+        handleUpdate(newValue) {
+            console.log('Received from child:', newValue);
+        }
+    }
+};
+&lt;/script&gt;
+
+// 子组件
+&lt;template&gt;
+    &lt;div&gt;
+        &lt;p&gt;{{ message }}&lt;/p&gt;
+        &lt;button @click="sendUpdate"&gt;向父组件发送消息&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+    props: {
+        message: String
+    },
+    methods: {
+        sendUpdate() {
+            this.$emit('update', 'Hello from child');
+        }
+    }
+};
+&lt;/script&gt;</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="lesson">
+                        <h4>2.3 插槽</h4>
+                        <p>学习Vue的插槽功能。</p>
+                    </div>
+
+                    <div class="lesson">
+                        <h4>2.4 动态组件</h4>
+                        <p>学习Vue的动态组件功能。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 习题 -->
+            <div class="exercises">
+                <h2 class="section-title">习题</h2>
+                
+                <!-- 第1章习题 -->
+                <div class="chapter-exercises">
+                    <h3>第1章：Vue基础习题</h3>
+                    
+                    <div class="exercise">
+                        <h4>习题1：创建基本Vue应用</h4>
+                        <p>创建一个简单的Vue应用，显示你的名字和年龄。</p>
+                        <div class="exercise-hint">
+                            <h5>提示：</h5>
+                            <p>使用Vue的模板语法和数据绑定。</p>
+                        </div>
+                    </div>
+
+                    <div class="exercise">
+                        <h4>习题2：使用计算属性</h4>
+                        <p>创建一个Vue应用，使用计算属性计算两个数的和。</p>
+                        <div class="exercise-hint">
+                            <h5>提示：</h5>
+                            <p>使用computed属性进行计算。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 第2章习题 -->
+                <div class="chapter-exercises">
+                    <h3>第2章：Vue组件习题</h3>
+                    
+                    <div class="exercise">
+                        <h4>习题1：创建组件</h4>
+                        <p>创建一个Vue组件，显示用户信息。</p>
+                        <div class="exercise-hint">
+                            <h5>提示：</h5>
+                            <p>使用props接收用户数据。</p>
+                        </div>
+                    </div>
+
+                    <div class="exercise">
+                        <h4>习题2：组件通信</h4>
+                        <p>创建两个组件，实现父子组件之间的通信。</p>
+                        <div class="exercise-hint">
+                            <h5>提示：</h5>
+                            <p>使用props和事件进行通信。</p>
+                        </div>
+                    </div>
+
+                    <div class="exercise">
+                        <h4>习题3：使用插槽</h4>
+                        <p>创建一个带有插槽的组件。</p>
+                        <div class="exercise-hint">
+                            <h5>提示：</h5>
+                            <p>使用slot标签定义插槽。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 麦脆鸡个人主页. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button class="back-to-top" id="back-to-top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
+
+    <script>
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // 移动端导航菜单
+        const navToggle = document.getElementById('nav-toggle');
+        const navLinks = document.getElementById('nav-links');
+
+        navToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('open');
+            navToggle.classList.toggle('open');
+        });
+
+        // 返回顶部按钮
+        const backToTopButton = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
