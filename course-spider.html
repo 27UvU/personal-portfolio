@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据采集与处理 - 麦脆鸡学习平台</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa; color: #333; line-height: 1.6;
+        }
+        nav {
+            background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky; top: 0; z-index: 100;
+        }
+        .nav-container {
+            max-width: 1200px; margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1rem 2rem;
+        }
+        .logo { font-size: 1.5rem; font-weight: bold; color: #4f46e5; text-decoration: none; }
+        .back-link { color: #4f46e5; text-decoration: none; font-weight: 500; }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 2rem; }
+
+        .progress-header {
+            background: #fff; padding: 1.5rem 2rem;
+            border-bottom: 1px solid #e2e8f0; margin-bottom: 2rem;
+        }
+        .progress-steps {
+            display: flex; justify-content: space-between; align-items: center;
+            max-width: 800px; margin: 0 auto;
+        }
+        .step {
+            display: flex; flex-direction: column; align-items: center;
+            gap: 0.5rem; flex: 1;
+        }
+        .step-circle {
+            width: 40px; height: 40px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: bold; font-size: 0.9rem;
+            border: 2px solid #e2e8f0; background: #fff; color: #94a3b8;
+            transition: all 0.3s;
+        }
+        .step.active .step-circle { border-color: #4f46e5; color: #4f46e5; }
+        .step.completed .step-circle { background: #4f46e5; color: #fff; border-color: #4f46e5; }
+        .step-label { font-size: 0.8rem; color: #64748b; }
+        .step.active .step-label { color: #4f46e5; font-weight: 600; }
+        .step-line {
+            flex: 1; height: 2px; background: #e2e8f0; margin: 0 0.5rem;
+            position: relative; top: -20px; z-index: -1;
+        }
+        .step-line.completed { background: #4f46e5; }
+
+        .content-card {
+            background: #fff; border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 2.5rem; margin-bottom: 2rem;
+        }
+        .content-card h2 { font-size: 1.5rem; margin-bottom: 1.5rem; color: #1e293b; }
+        .content-card h3 { font-size: 1.2rem; margin: 1.5rem 0 0.75rem; color: #334155; }
+        .content-card p { margin-bottom: 1rem; color: #475569; }
+        .content-card ul { margin-left: 1.5rem; margin-bottom: 1rem; color: #475569; }
+        .content-card li { margin-bottom: 0.5rem; }
+
+        .video-placeholder {
+            background: #1e293b; border-radius: 8px;
+            height: 400px; display: flex;
+            flex-direction: column; align-items: center; justify-content: center;
+            color: #94a3b8; margin: 1.5rem 0;
+        }
+        .video-placeholder .play-btn {
+            width: 80px; height: 80px; border-radius: 50%;
+            background: rgba(255,255,255,0.1); border: 2px solid rgba(255,255,255,0.3);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2rem; color: white; cursor: pointer;
+            transition: all 0.3s; margin-bottom: 1rem;
+        }
+        .video-placeholder .play-btn:hover { background: rgba(255,255,255,0.2); transform: scale(1.1); }
+
+        .code-block {
+            background: #1e293b; border-radius: 8px;
+            padding: 1.5rem; margin: 1rem 0;
+            overflow-x: auto;
+        }
+        .code-block pre {
+            color: #e2e8f0; font-family: 'Consolas', monospace;
+            font-size: 0.9rem; line-height: 1.6;
+        }
+        .code-keyword { color: #c678dd; }
+        .code-string { color: #98c379; }
+        .code-comment { color: #5c6370; font-style: italic; }
+        .code-function { color: #61afef; }
+        .code-number { color: #d19a66; }
+
+        .quiz-container { margin-top: 1.5rem; }
+        .quiz-item {
+            background: #f8fafc; border-radius: 8px;
+            padding: 1.5rem; margin-bottom: 1rem;
+            border-left: 4px solid #4f46e5;
+        }
+        .quiz-question { font-weight: 600; margin-bottom: 1rem; color: #1e293b; }
+        .quiz-options { display: flex; flex-direction: column; gap: 0.5rem; }
+        .quiz-option {
+            padding: 0.75rem 1rem; border: 2px solid #e2e8f0;
+            border-radius: 6px; cursor: pointer; background: #fff;
+            transition: all 0.2s;
+        }
+        .quiz-option:hover { border-color: #4f46e5; }
+        .quiz-option.selected-correct { border-color: #10b981; background: #d1fae5; }
+        .quiz-option.selected-wrong { border-color: #ef4444; background: #fee2e2; }
+        .quiz-option.correct-answer { border-color: #10b981; background: #d1fae5; }
+        .quiz-explanation {
+            margin-top: 1rem; padding: 1rem;
+            background: #eff6ff; border-radius: 6px;
+            display: none;
+        }
+        .quiz-explanation.show { display: block; }
+
+        .btn {
+            display: inline-block; padding: 0.875rem 2rem;
+            background: #4f46e5; color: white;
+            border: none; border-radius: 8px;
+            font-size: 1rem; font-weight: 600;
+            cursor: pointer; transition: all 0.3s;
+        }
+        .btn:hover { background: #4338ca; transform: translateY(-1px); }
+        .btn:disabled { background: #94a3b8; cursor: not-allowed; transform: none; }
+        .btn-secondary { background: #fff; color: #4f46e5; border: 2px solid #4f46e5; }
+        .btn-secondary:hover { background: #4f46e5; color: #fff; }
+        .btn-group { display: flex; gap: 1rem; justify-content: center; margin-top: 2rem; }
+
+        .hidden { display: none !important; }
+
+        .result-card { text-align: center; padding: 3rem 2rem; }
+        .score-circle {
+            width: 150px; height: 150px; border-radius: 50%;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            margin: 0 auto 2rem;
+            border: 8px solid #4f46e5;
+        }
+        .score-number { font-size: 3rem; font-weight: bold; color: #1e293b; }
+        .score-label { font-size: 0.9rem; color: #64748b; }
+        .grade-badge {
+            display: inline-block; padding: 0.5rem 1.5rem;
+            border-radius: 20px; font-weight: bold; font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .grade-a { background: #d1fae5; color: #065f46; }
+        .grade-b { background: #dbeafe; color: #1e40af; }
+        .grade-c { background: #fef3c7; color: #92400e; }
+        .grade-d { background: #fee2e2; color: #991b1b; }
+
+        .wrong-review { text-align: left; margin-top: 2rem; }
+        .wrong-item {
+            background: #fef2f2; border-radius: 8px;
+            padding: 1rem; margin-bottom: 1rem;
+            border-left: 4px solid #ef4444;
+        }
+        .suggestion-box {
+            background: #eff6ff; border-radius: 8px;
+            padding: 1.5rem; margin-top: 2rem; text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">麦脆鸡学习平台</a>
+            <a href="index.html" class="back-link">返回课程列表</a>
+        </div>
+    </nav>
+
+    <div class="progress-header">
+        <div class="progress-steps" id="progressSteps">
+            <div class="step active" data-step="1">
+                <div class="step-circle">1</div>
+                <span class="step-label">基础知识</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step" data-step="2">
+                <div class="step-circle">2</div>
+                <span class="step-label">图文教程</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step" data-step="3">
+                <div class="step-circle">3</div>
+                <span class="step-label">视频学习</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step" data-step="4">
+                <div class="step-circle">4</div>
+                <span class="step-label">知识检测</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step" data-step="5">
+                <div class="step-circle">5</div>
+                <span class="step-label">代码实操</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step" data-step="6">
+                <div class="step-circle">6</div>
+                <span class="step-label">学习评分</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- 步骤1: 基础知识 -->
+        <div class="content-card" id="step1">
+            <h2>基础知识</h2>
+            <h3>数据采集核心概念</h3>
+            <p>网络爬虫是按照一定规则自动抓取网络信息的程序。数据采集是数据分析和机器学习的第一步，获取高质量数据至关重要。</p>
+            <h3>HTTP 协议</h3>
+            <p>HTTP（超文本传输协议）是互联网上应用最广泛的协议。理解 HTTP 请求方法、状态码和请求头对爬虫开发至关重要。</p>
+            <ul>
+                <li>GET：获取资源</li>
+                <li>POST：提交数据</li>
+                <li>状态码：200 成功、404 未找到、500 服务器错误</li>
+                <li>请求头：User-Agent、Referer、Cookie 等</li>
+            </ul>
+            <h3>requests 库</h3>
+            <p>requests 是 Python 中简洁优雅的 HTTP 库，用于发送各种 HTTP 请求，是爬虫开发的基础工具。</p>
+            <h3>BeautifulSoup</h3>
+            <p>BeautifulSoup 是 Python 的 HTML/XML 解析库，可以从 HTML 或 XML 文件中提取数据。支持多种解析器如 lxml、html.parser。</p>
+            <h3>Scrapy</h3>
+            <p>Scrapy 是 Python 的一个快速、高层次的 Web 爬虫框架，用于抓取网站并提取结构化数据。它提供了完整的爬虫开发解决方案。</p>
+            <h3>反爬策略</h3>
+            <ul>
+                <li><strong>User-Agent 检测</strong>：识别非浏览器请求</li>
+                <li><strong>IP 限制</strong>：限制单个 IP 的请求频率</li>
+                <li><strong>验证码</strong>：要求人工验证</li>
+                <li><strong>动态渲染</strong>：使用 JavaScript 加载内容</li>
+                <li><strong>反爬应对</strong>：代理 IP、请求间隔、浏览器模拟</li>
+            </ul>
+            <div class="btn-group">
+                <button class="btn" onclick="nextStep(2)">下一步：图文教程</button>
+            </div>
+        </div>
+
+        <!-- 步骤2: 图文教程 -->
+        <div class="content-card hidden" id="step2">
+            <h2>图文教程</h2>
+            <h3>步骤一：发送请求</h3>
+            <div class="code-block">
+                <pre>import requests
+
+# 基本 GET 请求
+response = requests.get('https://api.example.com/data')
+print(response.status_code)
+print(response.json())
+
+# 带请求头
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+    'Accept': 'application/json'
+}
+response = requests.get('https://example.com', headers=headers)
+
+# POST 请求
+data = {'username': 'admin', 'password': '123456'}
+response = requests.post('https://api.example.com/login', data=data)</pre>
+            </div>
+            <h3>步骤二：解析 HTML</h3>
+            <div class="code-block">
+                <pre>from bs4 import BeautifulSoup
+
+html = '''
+&lt;html&gt;
+  &lt;body&gt;
+    &lt;div class="item"&gt;
+      &lt;h2&gt;Title 1&lt;/h2&gt;
+      &lt;span class="price"&gt;$100&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="item"&gt;
+      &lt;h2&gt;Title 2&lt;/h2&gt;
+      &lt;span class="price"&gt;$200&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+'''
+
+soup = BeautifulSoup(html, 'html.parser')
+
+# 查找元素
+titles = soup.find_all('h2')
+for title in titles:
+    print(title.text)
+
+# CSS 选择器
+items = soup.select('.item')
+for item in items:
+    title = item.select_one('h2').text
+    price = item.select_one('.price').text
+    print(f'{title}: {price}')</pre>
+            </div>
+            <h3>步骤三：数据提取与存储</h3>
+            <div class="code-block">
+                <pre>import csv
+import json
+
+# 提取数据
+data = []
+for item in soup.select('.item'):
+    data.append({
+        'title': item.select_one('h2').text,
+        'price': item.select_one('.price').text
+    })
+
+# 保存为 CSV
+with open('data.csv', 'w', newline='', encoding='utf-8') as f:
+    writer = csv.DictWriter(f, fieldnames=['title', 'price'])
+    writer.writeheader()
+    writer.writerows(data)
+
+# 保存为 JSON
+with open('data.json', 'w', encoding='utf-8') as f:
+    json.dump(data, f, ensure_ascii=False, indent=2)</pre>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-secondary" onclick="prevStep(1)">上一步</button>
+                <button class="btn" onclick="nextStep(3)">下一步：视频学习</button>
+            </div>
+        </div>
+
+        <!-- 步骤3: 视频学习 -->
+        <div class="content-card hidden" id="step3">
+            <h2>视频学习</h2>
+            <div class="video-placeholder">
+                <div class="play-btn">▶</div>
+                <p>点击播放课程视频</p>
+                <p style="font-size:0.85rem;margin-top:0.5rem;">视频时长：26:45</p>
+            </div>
+            <div id="videoNotes">
+                <h3>视频要点</h3>
+                <ul>
+                    <li>爬虫原理：请求-响应模型、爬虫工作流程</li>
+                    <li>解析技术：XPath、CSS 选择器、正则表达式</li>
+                    <li>数据清洗：去重、格式转换、缺失值处理</li>
+                    <li>Scrapy 框架：Spider、Item、Pipeline、Middleware</li>
+                    <li>反爬对抗：代理池、验证码识别、浏览器指纹</li>
+                </ul>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-secondary" onclick="prevStep(2)">上一步</button>
+                <button class="btn" onclick="nextStep(4)">下一步：知识检测</button>
+            </div>
+        </div>
+
+        <!-- 步骤4: 知识检测 -->
+        <div class="content-card hidden" id="step4">
+            <h2>知识检测</h2>
+            <p style="color:#64748b;margin-bottom:1.5rem;">请完成以下题目，检验你的学习成果</p>
+            <div class="quiz-container" id="quizContainer">
+                <div class="quiz-item" data-idx="0">
+                    <div class="quiz-question">1. 设置 User-Agent 目的？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectAnswer(0, 0, this)">A. 加速请求速度</div>
+                        <div class="quiz-option" onclick="selectAnswer(0, 1, this)">B. 模拟浏览器访问</div>
+                        <div class="quiz-option" onclick="selectAnswer(0, 2, this)">C. 加密请求数据</div>
+                        <div class="quiz-option" onclick="selectAnswer(0, 3, this)">D. 保存登录状态</div>
+                    </div>
+                    <div class="quiz-explanation" id="exp-0">
+                        <strong>解析：</strong>设置 User-Agent 可以模拟真实浏览器的请求头，避免被服务器识别为爬虫程序而拒绝访问。
+                    </div>
+                </div>
+                <div class="quiz-item" data-idx="1">
+                    <div class="quiz-question">2. find_all 作用？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectAnswer(1, 0, this)">A. 查找第一个匹配元素</div>
+                        <div class="quiz-option" onclick="selectAnswer(1, 1, this)">B. 查找所有匹配元素</div>
+                        <div class="quiz-option" onclick="selectAnswer(1, 2, this)">C. 查找父元素</div>
+                        <div class="quiz-option" onclick="selectAnswer(1, 3, this)">D. 查找兄弟元素</div>
+                    </div>
+                    <div class="quiz-explanation" id="exp-1">
+                        <strong>解析：</strong>BeautifulSoup 的 find_all() 方法返回文档中所有匹配的元素列表，而 find() 只返回第一个匹配元素。
+                    </div>
+                </div>
+                <div class="quiz-item" data-idx="2">
+                    <div class="quiz-question">3. Scrapy 错误说法？</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="selectAnswer(2, 0, this)">A. Scrapy 是 Python 爬虫框架</div>
+                        <div class="quiz-option" onclick="selectAnswer(2, 1, this)">B. Scrapy 支持异步处理</div>
+                        <div class="quiz-option" onclick="selectAnswer(2, 2, this)">C. 只能爬静态页面</div>
+                        <div class="quiz-option" onclick="selectAnswer(2, 3, this)">D. Scrapy 有 Pipeline 机制</div>
+                    </div>
+                    <div class="quiz-explanation" id="exp-2">
+                        <strong>解析：</strong>Scrapy 不仅可以爬取静态页面，还可以通过 Splash、Selenium 等方式处理动态渲染的页面。
+                    </div>
+                </div>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-secondary" onclick="prevStep(3)">上一步</button>
+                <button class="btn" id="submitQuiz" onclick="submitQuiz()">提交答案</button>
+                <button class="btn hidden" id="nextToCode" onclick="nextStep(5)">下一步：代码实操</button>
+            </div>
+        </div>
+
+        <!-- 步骤5: 代码实操 -->
+        <div class="content-card hidden" id="step5">
+            <h2>代码实操</h2>
+            <p style="color:#64748b;margin-bottom:1rem;">阅读以下代码，理解实现原理，然后尝试修改并运行</p>
+            <h3>实践任务：爬虫与数据清洗类</h3>
+            <div class="code-block">
+                <pre><span class="code-keyword">import</span> requests
+<span class="code-keyword">from</span> bs4 <span class="code-keyword">import</span> BeautifulSoup
+<span class="code-keyword">import</span> re
+
+<span class="code-keyword">class</span> <span class="code-function">WebScraper</span>:
+    <span class="code-keyword">def</span> <span class="code-function">__init__</span>(self, base_url):
+        self.base_url = base_url
+        self.session = requests.Session()
+        self.session.headers.update({
+            <span class="code-string">'User-Agent'</span>: <span class="code-string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'</span>
+        })
+
+    <span class="code-keyword">def</span> <span class="code-function">fetch</span>(self, url):
+        <span class="code-string">"""获取页面内容"""</span>
+        <span class="code-keyword">try</span>:
+            response = self.session.get(url, timeout=10)
+            response.raise_for_status()
+            <span class="code-keyword">return</span> response.text
+        <span class="code-keyword">except</span> requests.RequestException <span class="code-keyword">as</span> e:
+            print(<span class="code-string">f"Error fetching {url}: {e}"</span>)
+            <span class="code-keyword">return</span> <span class="code-keyword">None</span>
+
+    <span class="code-keyword">def</span> <span class="code-function">parse</span>(self, html):
+        <span class="code-string">"""解析并提取数据"""</span>
+        soup = BeautifulSoup(html, <span class="code-string">'html.parser'</span>)
+        items = []
+        <span class="code-keyword">for</span> card <span class="code-keyword">in</span> soup.select(<span class="code-string">'.product-card'</span>):
+            item = {
+                <span class="code-string">'name'</span>: self.<span class="code-function">clean_text</span>(card.select_one(<span class="code-string">'.name'</span>)),
+                <span class="code-string">'price'</span>: self.<span class="code-function">extract_price</span>(card.select_one(<span class="code-string">'.price'</span>)),
+                <span class="code-string">'rating'</span>: self.<span class="code-function">extract_rating</span>(card.select_one(<span class="code-string">'.rating'</span>))
+            }
+            items.append(item)
+        <span class="code-keyword">return</span> items
+
+    <span class="code-keyword">def</span> <span class="code-function">clean_text</span>(self, element):
+        <span class="code-string">"""清洗文本"""</span>
+        <span class="code-keyword">if</span> <span class="code-keyword">not</span> element:
+            <span class="code-keyword">return</span> <span class="code-string">''</span>
+        text = element.get_text(strip=<span class="code-keyword">True</span>)
+        <span class="code-keyword">return</span> re.sub(<span class="code-string">r'\s+'</span>, <span class="code-string">' '</span>, text)
+
+    <span class="code-keyword">def</span> <span class="code-function">extract_price</span>(self, element):
+        <span class="code-string">"""提取价格数字"""</span>
+        text = self.<span class="code-function">clean_text</span>(element)
+        match = re.search(<span class="code-string">r'[\d,]+\.?\d*'</span>, text)
+        <span class="code-keyword">return</span> float(match.group().replace(<span class="code-string">','</span>, <span class="code-string">''</span>)) <span class="code-keyword">if</span> match <span class="code-keyword">else</span> <span class="code-keyword">None</span>
+
+    <span class="code-keyword">def</span> <span class="code-function">extract_rating</span>(self, element):
+        <span class="code-string">"""提取评分"""</span>
+        text = self.<span class="code-function">clean_text</span>(element)
+        match = re.search(<span class="code-string">r'(\d+\.?\d*)'</span>, text)
+        <span class="code-keyword">return</span> float(match.group(1)) <span class="code-keyword">if</span> match <span class="code-keyword">else</span> <span class="code-keyword">None</span></pre>
+            </div>
+            <h3>练习任务</h3>
+            <ul>
+                <li>添加代理 IP 支持，实现 IP 轮换</li>
+                <li>添加请求间隔和重试机制</li>
+                <li>将数据保存到 SQLite 数据库</li>
+            </ul>
+            <div class="btn-group">
+                <button class="btn btn-secondary" onclick="prevStep(4)">上一步</button>
+                <button class="btn" onclick="finishCourse()">完成学习，查看评分</button>
+            </div>
+        </div>
+
+        <!-- 步骤6: 学习评分 -->
+        <div class="content-card hidden" id="step6">
+            <div class="result-card">
+                <h2>学习完成！</h2>
+                <div class="score-circle">
+                    <span class="score-number" id="finalScore">0</span>
+                    <span class="score-label">分</span>
+                </div>
+                <div class="grade-badge" id="gradeBadge">评级</div>
+                <p id="gradeMessage" style="color:#64748b;margin-bottom:2rem;"></p>
+
+                <div class="wrong-review hidden" id="wrongReview">
+                    <h3 style="margin-bottom:1rem;">错题回顾</h3>
+                    <div id="wrongList"></div>
+                </div>
+
+                <div class="suggestion-box" id="suggestionBox">
+                    <h3 style="margin-bottom:0.75rem;">学习建议</h3>
+                    <p id="suggestionText"></p>
+                </div>
+
+                <div class="btn-group" style="margin-top:2rem;">
+                    <a href="index.html" class="btn">返回课程列表</a>
+                    <button class="btn btn-secondary" onclick="restartCourse()">重新学习</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const courseData = {
+            quiz: [
+                { correct: 1 },
+                { correct: 1 },
+                { correct: 2 }
+            ]
+        };
+
+        const questions = [
+            { question: '设置 User-Agent 目的？', options: ['加速请求速度', '模拟浏览器访问', '加密请求数据', '保存登录状态'], explanation: '设置 User-Agent 可以模拟真实浏览器的请求头，避免被服务器识别为爬虫程序而拒绝访问。' },
+            { question: 'find_all 作用？', options: ['查找第一个匹配元素', '查找所有匹配元素', '查找父元素', '查找兄弟元素'], explanation: 'BeautifulSoup 的 find_all() 方法返回文档中所有匹配的元素列表，而 find() 只返回第一个匹配元素。' },
+            { question: 'Scrapy 错误说法？', options: ['Scrapy 是 Python 爬虫框架', 'Scrapy 支持异步处理', '只能爬静态页面', 'Scrapy 有 Pipeline 机制'], explanation: 'Scrapy 不仅可以爬取静态页面，还可以通过 Splash、Selenium 等方式处理动态渲染的页面。' }
+        ];
+
+        let currentStep = 1;
+        let quizAnswers = {};
+        let quizSubmitted = false;
+
+        function selectAnswer(qIdx, optIdx, element) {
+            if (quizSubmitted) return;
+            const item = element.closest('.quiz-item');
+            const options = item.querySelectorAll('.quiz-option');
+            options.forEach(opt => opt.classList.remove('selected-correct', 'selected-wrong'));
+            element.classList.add('selected-correct');
+            quizAnswers[qIdx] = optIdx;
+        }
+
+        function submitQuiz() {
+            if (Object.keys(quizAnswers).length < courseData.quiz.length) {
+                alert('请完成所有题目后再提交！');
+                return;
+            }
+            quizSubmitted = true;
+            let correct = 0;
+            courseData.quiz.forEach((q, idx) => {
+                const item = document.querySelector(`.quiz-item[data-idx="${idx}"]`);
+                const options = item.querySelectorAll('.quiz-option');
+                const userAnswer = quizAnswers[idx];
+                options.forEach((opt, optIdx) => {
+                    opt.style.pointerEvents = 'none';
+                    if (optIdx === q.correct) {
+                        opt.classList.add('correct-answer');
+                    }
+                    if (optIdx === userAnswer && userAnswer !== q.correct) {
+                        opt.classList.add('selected-wrong');
+                    }
+                });
+                document.getElementById(`exp-${idx}`).classList.add('show');
+                if (userAnswer === q.correct) correct++;
+            });
+            document.getElementById('submitQuiz').classList.add('hidden');
+            document.getElementById('nextToCode').classList.remove('hidden');
+            window.quizScore = Math.round((correct / courseData.quiz.length) * 100);
+        }
+
+        function nextStep(step) {
+            document.getElementById(`step${currentStep}`).classList.add('hidden');
+            document.getElementById(`step${step}`).classList.remove('hidden');
+            updateProgress(step);
+            currentStep = step;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function prevStep(step) {
+            document.getElementById(`step${currentStep}`).classList.add('hidden');
+            document.getElementById(`step${step}`).classList.remove('hidden');
+            updateProgress(step);
+            currentStep = step;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function updateProgress(step) {
+            const steps = document.querySelectorAll('.step');
+            const lines = document.querySelectorAll('.step-line');
+            steps.forEach((s, i) => {
+                s.classList.remove('active', 'completed');
+                if (i + 1 < step) {
+                    s.classList.add('completed');
+                } else if (i + 1 === step) {
+                    s.classList.add('active');
+                }
+            });
+            lines.forEach((l, i) => {
+                l.classList.toggle('completed', i < step - 1);
+            });
+        }
+
+        function finishCourse() {
+            const score = window.quizScore || 0;
+            document.getElementById('finalScore').textContent = score;
+            let grade, gradeClass, message;
+            if (score >= 90) {
+                grade = '优秀'; gradeClass = 'grade-a';
+                message = '太棒了！你对数据采集与处理掌握得非常扎实！';
+            } else if (score >= 75) {
+                grade = '良好'; gradeClass = 'grade-b';
+                message = '做得不错！大部分爬虫内容已经掌握，继续加油！';
+            } else if (score >= 60) {
+                grade = '及格'; gradeClass = 'grade-c';
+                message = '基本掌握了爬虫课程内容，建议复习薄弱环节。';
+            } else {
+                grade = '需努力'; gradeClass = 'grade-d';
+                message = '还需要更多练习，建议重新学习爬虫课程内容。';
+            }
+            const badge = document.getElementById('gradeBadge');
+            badge.textContent = grade;
+            badge.className = 'grade-badge ' + gradeClass;
+            document.getElementById('gradeMessage').textContent = message;
+
+            const wrongList = [];
+            questions.forEach((q, idx) => {
+                if (quizAnswers[idx] !== courseData.quiz[idx].correct) {
+                    wrongList.push({
+                        question: q.question,
+                        userAnswer: q.options[quizAnswers[idx]],
+                        correctAnswer: q.options[courseData.quiz[idx].correct],
+                        explanation: q.explanation
+                    });
+                }
+            });
+
+            if (wrongList.length > 0) {
+                document.getElementById('wrongReview').classList.remove('hidden');
+                document.getElementById('wrongList').innerHTML = wrongList.map(w => `
+                    <div class="wrong-item">
+                        <p><strong>题目：</strong>${w.question}</p>
+                        <p style="color:#ef4444;margin-top:0.5rem;"><strong>你的答案：</strong>${w.userAnswer}</p>
+                        <p style="color:#10b981;"><strong>正确答案：</strong>${w.correctAnswer}</p>
+                        <p style="margin-top:0.5rem;"><strong>解析：</strong>${w.explanation}</p>
+                    </div>
+                `).join('');
+            }
+
+            let suggestion = '';
+            if (score >= 90) {
+                suggestion = '你已经很好地掌握了数据采集技术。建议继续学习 Scrapy 框架和分布式爬虫，尝试构建大规模数据采集系统。可以学习 Playwright 处理复杂动态页面。';
+            } else if (score >= 75) {
+                suggestion = '你对大部分爬虫概念已有较好理解。建议重点复习错题涉及的知识点，特别是 HTTP 协议和解析技术部分。多进行实际爬虫项目练习。';
+            } else if (score >= 60) {
+                suggestion = '你掌握了爬虫基础内容，但还有提升空间。建议重新观看视频教程，重点理解 requests 库、BeautifulSoup 解析和反爬策略等核心概念。';
+            } else {
+                suggestion = '建议重新完整学习本课程内容。HTTP 协议和 HTML 解析是爬虫的基础，需要反复学习和实践。可以从简单的单页爬虫开始，逐步深入。';
+            }
+            document.getElementById('suggestionText').textContent = suggestion;
+            nextStep(6);
+        }
+
+        function restartCourse() {
+            currentStep = 1;
+            quizAnswers = {};
+            quizSubmitted = false;
+            window.quizScore = 0;
+            document.querySelectorAll('.content-card').forEach((card, i) => {
+                card.classList.toggle('hidden', i !== 0);
+            });
+            document.getElementById('submitQuiz').classList.remove('hidden');
+            document.getElementById('nextToCode').classList.add('hidden');
+            document.getElementById('wrongReview').classList.add('hidden');
+            document.querySelectorAll('.quiz-option').forEach(opt => {
+                opt.classList.remove('selected-correct', 'selected-wrong', 'correct-answer');
+                opt.style.pointerEvents = 'auto';
+            });
+            document.querySelectorAll('.quiz-explanation').forEach(exp => exp.classList.remove('show'));
+            updateProgress(1);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

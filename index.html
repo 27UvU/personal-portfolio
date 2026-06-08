@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>麦脆鸡 - 在线学习平台</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        /* 导航 */
+        nav {
+            background: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky; top: 0; z-index: 100;
+        }
+        .nav-container {
+            max-width: 1200px; margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1rem 2rem;
+        }
+        .logo { font-size: 1.5rem; font-weight: bold; color: #4f46e5; text-decoration: none; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: #555; font-weight: 500; }
+        .nav-links a:hover { color: #4f46e5; }
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white; text-align: center; padding: 80px 2rem;
+        }
+        .hero h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .hero p { font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto; }
+        /* 课程区域 */
+        .section { max-width: 1200px; margin: 0 auto; padding: 60px 2rem; }
+        .section-title { font-size: 1.8rem; margin-bottom: 2rem; text-align: center; }
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .course-card {
+            background: #fff; border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            overflow: hidden; cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none; color: inherit; display: block;
+        }
+        .course-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+        .course-image {
+            height: 160px; background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 3rem;
+        }
+        .course-content { padding: 1.5rem; }
+        .course-title { font-size: 1.2rem; margin-bottom: 0.5rem; color: #1e293b; }
+        .course-desc { color: #64748b; font-size: 0.9rem; margin-bottom: 1rem; }
+        .course-meta {
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .status {
+            padding: 0.25rem 0.75rem; border-radius: 12px;
+            font-size: 0.75rem; font-weight: 600;
+        }
+        .status.active { background: #dbeafe; color: #1e40af; }
+        .status.upcoming { background: #fef3c7; color: #92400e; }
+        .progress-bar {
+            width: 100%; height: 6px; background: #e2e8f0;
+            border-radius: 3px; margin-top: 1rem; overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%; background: #4f46e5; border-radius: 3px;
+            transition: width 0.3s;
+        }
+        /* 关于 */
+        .about-section { background: #fff; }
+        .about-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem; margin-top: 2rem;
+        }
+        .about-card {
+            text-align: center; padding: 2rem;
+            border-radius: 12px; background: #f8fafc;
+        }
+        .about-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .about-label { color: #64748b; font-size: 0.875rem; }
+        .about-value { font-size: 1.1rem; font-weight: 600; margin-top: 0.25rem; }
+        footer {
+            background: #1e293b; color: white; text-align: center; padding: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">🍟 麦脆鸡学习平台</a>
+            <ul class="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="#courses">课程</a></li>
+                <li><a href="#about">关于</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>欢迎来到麦脆鸡学习平台</h1>
+        <p>系统化学习前端开发与数据分析，从理论到实践，一站式掌握核心技能</p>
+    </section>
+
+    <section class="section" id="courses">
+        <h2 class="section-title">📚 全部课程</h2>
+        <div class="course-grid">
+            <a href="course-html.html" class="course-card">
+                <div class="course-image">🌐</div>
+                <div class="course-content">
+                    <h3 class="course-title">HTML & CSS 基础</h3>
+                    <p class="course-desc">从零开始学习网页开发基础，掌握HTML结构与CSS样式</p>
+                    <div class="course-meta">
+                        <span class="status active">进行中</span>
+                        <span style="color:#64748b;font-size:0.85rem;">10 节课</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill" style="width:30%"></div></div>
+                </div>
+            </a>
+            <a href="course-js.html" class="course-card">
+                <div class="course-image">⚡</div>
+                <div class="course-content">
+                    <h3 class="course-title">JavaScript 进阶</h3>
+                    <p class="course-desc">深入理解闭包、原型链、异步编程等核心概念</p>
+                    <div class="course-meta">
+                        <span class="status upcoming">即将上线</span>
+                        <span style="color:#64748b;font-size:0.85rem;">12 节课</span>
+                    </div>
+                </div>
+            </a>
+            <a href="course-react.html" class="course-card">
+                <div class="course-image">⚛️</div>
+                <div class="course-content">
+                    <h3 class="course-title">React 实战</h3>
+                    <p class="course-desc">掌握组件化开发和状态管理，构建现代化应用</p>
+                    <div class="course-meta">
+                        <span class="status upcoming">即将上线</span>
+                        <span style="color:#64748b;font-size:0.85rem;">10 节课</span>
+                    </div>
+                </div>
+            </a>
+            <a href="course-vue.html" class="course-card">
+                <div class="course-image">🟢</div>
+                <div class="course-content">
+                    <h3 class="course-title">Vue 开发</h3>
+                    <p class="course-desc">学习Vue.js框架，掌握响应式原理和组件开发</p>
+                    <div class="course-meta">
+                        <span class="status upcoming">即将上线</span>
+                        <span style="color:#64748b;font-size:0.85rem;">10 节课</span>
+                    </div>
+                </div>
+            </a>
+            <a href="course-python.html" class="course-card">
+                <div class="course-image">🐍</div>
+                <div class="course-content">
+                    <h3 class="course-title">Python 基础</h3>
+                    <p class="course-desc">系统学习Python语法、数据结构和面向对象编程</p>
+                    <div class="course-meta">
+                        <span class="status active">进行中</span>
+                        <span style="color:#64748b;font-size:0.85rem;">12 节课</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill" style="width:45%"></div></div>
+                </div>
+            </a>
+            <a href="course-data.html" class="course-card">
+                <div class="course-image">📊</div>
+                <div class="course-content">
+                    <h3 class="course-title">数据分析技术</h3>
+                    <p class="course-desc">掌握NumPy、Pandas、Matplotlib等核心工具</p>
+                    <div class="course-meta">
+                        <span class="status upcoming">即将上线</span>
+                        <span style="color:#64748b;font-size:0.85rem;">10 节课</span>
+                    </div>
+                </div>
+            </a>
+            <a href="course-db.html" class="course-card">
+                <div class="course-image">🗄️</div>
+                <div class="course-content">
+                    <h3 class="course-title">数据库原理</h3>
+                    <p class="course-desc">学习SQL语言和数据库设计，掌握MySQL和PostgreSQL</p>
+                    <div class="course-meta">
+                        <span class="status upcoming">即将上线</span>
+                        <span style="color:#64748b;font-size:0.85rem;">8 节课</span>
+                    </div>
+                </div>
+            </a>
+            <a href="course-spider.html" class="course-card">
+                <div class="course-image">🕷️</div>
+                <div class="course-content">
+                    <h3 class="course-title">数据采集与处理</h3>
+                    <p class="course-desc">学习爬虫技术和数据清洗方法</p>
+                    <div class="course-meta">
+                        <span class="status upcoming">即将上线</span>
+                        <span style="color:#64748b;font-size:0.85rem;">8 节课</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section class="section about-section" id="about">
+        <h2 class="section-title">👤 关于我</h2>
+        <p style="text-align:center;color:#64748b;max-width:600px;margin:0 auto 2rem;">
+            专注于前端开发与数据分析，致力于通过系统化的课程设计帮助学习者快速成长
+        </p>
+        <div class="about-grid">
+            <div class="about-card">
+                <div class="about-icon">🎓</div>
+                <div class="about-label">教育背景</div>
+                <div class="about-value">广东科学技术职业学院</div>
+            </div>
+            <div class="about-card">
+                <div class="about-icon">🏫</div>
+                <div class="about-label">所属学院</div>
+                <div class="about-value">商学院</div>
+            </div>
+            <div class="about-card">
+                <div class="about-icon">📚</div>
+                <div class="about-label">专业方向</div>
+                <div class="about-value">商务数据分析与应用</div>
+            </div>
+            <div class="about-card">
+                <div class="about-icon">💻</div>
+                <div class="about-label">技能方向</div>
+                <div class="about-value">前端开发 & 数据分析</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>🍟 麦脆鸡学习平台 - 让学习更简单</p>
+    </footer>
+</body>
+</html>
